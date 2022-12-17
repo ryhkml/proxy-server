@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  proxy:
+    hostname: proxy_server
+    restart: always
+    image: ubuntu/squid
+    stdin_open: true
+    tty: true
+    # dns:
+      # - 208.67.222.222 # OpenDNS
+      # - 208.67.220.220 # OpenDNS
+    ports:
+      - 3128:3128
+    # volumes:
+      # - ./squid.conf:/etc/squid/squid.conf:ro
+      # - ./acl/BLACKLIST_DOMAINS.txt:/etc/squid/deny/BLACKLIST_DOMAINS.txt:ro
+      # - ./error/<ERR_TEMPLATE_NAME>:/usr/share/squid/errors/templates/<ERR_TEMPLATE_NAME>:ro
+    networks:
+      - net
+    environment:
+      - TZ=UTC
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: "1"
+    #       memory: 256M
+    #     reservations:
+    #       cpus: "1"
+    #       memory: 128M
+
+networks:
+  net:

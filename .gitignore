@@ -1,0 +1,10 @@
+/data
+
+*.der
+*.log
+*.pem
+
+squid.vm.conf
+note.txt
+
+.env
